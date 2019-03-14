@@ -238,16 +238,14 @@ function init() {
         }
         console.log(figure);
         var stlString = exporter.parse(figure)
-        var name = CK.activeCharacter.name
-        name = name === "" ? "unnamed" : name
+        var name = get_name();
         download(stlString, name + '.stl', 'application/sla');
     });
     stl_base.click(function(e) {
         e.preventDefault(); 
         var exporter = new RK.STLExporter();    
         var stlString = exporter.parse([CK.activeCharacter.threeObj])
-        var name = CK.activeCharacter.name
-        name = name === "" ? "unnamed" : name
+        var name = get_name();
         download(stlString, name + '_base.stl', 'application/sla');
     });
 
@@ -255,8 +253,7 @@ function init() {
     sjson.click(function(e) {
         e.preventDefault();
         var char_json = JSON.stringify(CK.activeCharacter.characterData);
-        var name = CK.activeCharacter.name
-        name = name === "" ? "unnamed" : name
+        var name = get_name();
         download(char_json, name + ".json", "text/plain");
     });
 
@@ -273,6 +270,12 @@ function init() {
         reader.readAsText(file);
     });
 })()};
+
+function get_name() {
+  var name = CK.activeCharacteractivechar.characterData.meta.character_name;
+  name = name === "" ? "unnamed" : name;
+  return name;
+}
 
 function inject_script(url, callback) {
   var head = document.getElementsByTagName("head")[0];
