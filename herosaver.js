@@ -200,6 +200,8 @@ function init() {
         e.preventDefault(); 
         var exporter = new RK.STLExporter();    
         var objs = CK.activeCharacter.threeObj.children;    
+        console.log("CK stuff");
+        console.log(CK);
         var character = objs[0];
         var figure = [];
         var max_objs = 0;
