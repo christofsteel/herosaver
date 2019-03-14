@@ -272,7 +272,7 @@ function init() {
 })()};
 
 function get_name() {
-  var name = CK.activeCharacteractivechar.characterData.meta.character_name;
+  var name = CK.activeCharacter.characterData.meta.character_name;
   name = name === "" ? "unnamed" : name;
   return name;
 }
