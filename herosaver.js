@@ -236,9 +236,7 @@ function init() {
             figure.push(mount);
             console.log(figure);
         }
-        figure[0].scale.x = 10;
-        figure[0].scale.y = 10;
-        figure[0].scale.z = 10;
+        figure[0].scale.setScalar(10);
         console.log(figure);
         var stlString = exporter.parse(figure)
         var name = get_name();
