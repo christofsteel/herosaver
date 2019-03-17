@@ -5,7 +5,7 @@ var jqueryjs = "//code.jquery.com/jquery-3.3.1.min.js";
 var threejs = "//cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js";
 var downloadjs = "//raw.githubusercontent.com/rndme/download/master/download.js";
 
-var menu_items;
+var character_area, stl, stl_base, sjson, ljson, labeljson;
 
 function init() {
 
@@ -189,9 +189,20 @@ function init() {
         });
     }
 	
-	var character_area, stl, stl_base, sjson, ljson, labeljson;
+	stl = 				jQuery("<a />").css(menu_style).text("Export Figure");
+	stl_base = 			jQuery("<a />").css(menu_style).text("Export Figure + Base");
+	sjson = 			jQuery("<a />").css(menu_style).text("Save JSON");
+	ljson  = 			jQuery("<input/>").attr({"type": "file", "id": "ljson"}).css({"display":"none"}).text("Load JSON");
+	labeljson  = 		jQuery("<label/>").attr({"for": "ljson"}).css(menu_style).text("Load JSON");
 	
-	inject_menu(character_area, stl, stl_base, sjson, ljson, labeljson);
+	character_area = 	jQuery(characterArea_hook);
+	
+    character_area.append(stl);
+    character_area.append(stl_base);
+    character_area.append(sjson);
+    character_area.append(ljson);
+    character_area.append(labeljson);
+    character_area.css("right", 0);
 
 
     stl.click(function(e) {
@@ -279,26 +290,6 @@ function get_name() {
   var name = CK.activeCharacter.characterData.meta.character_name;
   name = name === "" ? "unnamed" : name;
   return name;
-}
-
-function inject_menu(character_area, stl, stl_base, sjson, ljson, labeljson){
-	
-	menu_items = {character_area, stl, stl_base, sjson, ljson, labeljson};
-	
-	stl = 				jQuery("<a />").css(menu_style).text("Export Figure");
-	stl_base = 			jQuery("<a />").css(menu_style).text("Export Figure + Base");
-	sjson = 			jQuery("<a />").css(menu_style).text("Save JSON");
-	ljson  = 			jQuery("<input/>").attr({"type": "file", "id": "ljson"}).css({"display":"none"}).text("Load JSON");
-	labeljson  = 		jQuery("<label/>").attr({"for": "ljson"}).css(menu_style).text("Load JSON");
-	
-	character_area = 	jQuery(characterArea_hook);
-	
-    character_area.append(stl);
-    character_area.append(stl_base);
-    character_area.append(sjson);
-    character_area.append(ljson);
-    character_area.append(labeljson);
-    character_area.css("right", 0);
 }
 
 function inject_script(url, callback) {
