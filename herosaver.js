@@ -3,11 +3,7 @@ var jqueryjs = "//code.jquery.com/jquery-3.3.1.min.js";
 var threejs = "//cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js";
 var downloadjs = "//raw.githubusercontent.com/rndme/download/master/download.js";
 
-inject_script(jqueryjs, function () {});
-inject_script(threejs, function () { init() });
-inject_script(downloadjs, function () {});
 
-inject_menu();
 
 function init() {
 
@@ -269,6 +265,11 @@ function init() {
         reader.readAsText(file);
     });
 })()};
+
+
+inject_script(jqueryjs, function () {});
+inject_script(threejs, function () { init() });
+inject_script(downloadjs, function () {});
 
 function get_name() {
   var name = CK.activeCharacter.characterData.meta.character_name;
