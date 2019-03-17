@@ -5,7 +5,7 @@ var jqueryjs = "//code.jquery.com/jquery-3.3.1.min.js";
 var threejs = "//cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js";
 var downloadjs = "//raw.githubusercontent.com/rndme/download/master/download.js";
 
-var character_area, stl, stl_base, sjson, ljson, labeljson;
+var menu_items;
 
 function init() {
 
@@ -188,8 +188,10 @@ function init() {
             return saveAs;
         });
     }
-
-	inject_menu();
+	
+	var character_area, stl, stl_base, sjson, ljson, labeljson;
+	
+	inject_menu(character_area, stl, stl_base, sjson, ljson, labeljson);
 
 
     stl.click(function(e) {
@@ -279,15 +281,17 @@ function get_name() {
   return name;
 }
 
-function inject_menu(){
+function inject_menu(character_area, stl, stl_base, sjson, ljson, labeljson){
 	
-	var stl = 				jQuery("<a />").css(menu_style).text("Export Figure");
-	var stl_base = 			jQuery("<a />").css(menu_style).text("Export Figure + Base");
-	var sjson = 			jQuery("<a />").css(menu_style).text("Save JSON");
-	var ljson  = 			jQuery("<input/>").attr({"type": "file", "id": "ljson"}).css({"display":"none"}).text("Load JSON");
-	var labeljson  = 		jQuery("<label/>").attr({"for": "ljson"}).css(menu_style).text("Load JSON");
+	menu_items = {character_area, stl, stl_base, sjson, ljson, labeljson};
 	
-	var character_area = 	jQuery(characterArea_hook);
+	stl = 				jQuery("<a />").css(menu_style).text("Export Figure");
+	stl_base = 			jQuery("<a />").css(menu_style).text("Export Figure + Base");
+	sjson = 			jQuery("<a />").css(menu_style).text("Save JSON");
+	ljson  = 			jQuery("<input/>").attr({"type": "file", "id": "ljson"}).css({"display":"none"}).text("Load JSON");
+	labeljson  = 		jQuery("<label/>").attr({"for": "ljson"}).css(menu_style).text("Load JSON");
+	
+	character_area = 	jQuery(characterArea_hook);
 	
     character_area.append(stl);
     character_area.append(stl_base);
