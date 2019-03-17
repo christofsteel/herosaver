@@ -3,7 +3,7 @@ Herosaver
 
 Save Configuration and STL of https://www.heroforge.com/
 
-Usage
+Usage (Option 1 - Browser Console)
 -----
 
   1. Go to https://www.heroforge.com/
@@ -13,6 +13,21 @@ Usage
 ```
 var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/christofsteel/herosaver/master/herosaver.min.js",true);xhr.onreadystatechange=function(){if(xhr.readyState==4){var script=document.createElement("script");script.type="text/javascript";script.text=xhr.responseText;document.body.appendChild(script)}};xhr.send(null);
 ```
+
+Usage (Option 2 - Greecemonkey)
+-----
+
+// ==UserScript==
+// @name		Herosaver
+// @include		*heroforge.com*
+// ==/UserScript==
+
+var loadHerosaver = setInterval(function() {
+  if (!document.getElementById("loading-overlay")) {
+    clearInterval(loadHerosaver);
+    var xhr=new XMLHttpRequest;xhr.open("get","https://raw.githubusercontent.com/christofsteel/herosaver/master/herosaver.min.js",true);xhr.onreadystatechange=function(){if(xhr.readyState==4){var script=document.createElement("script");script.type="text/javascript";script.text=xhr.responseText;document.body.appendChild(script)}};xhr.send(null);
+  }	
+}, 100);
 
 Limitations
 -----------
