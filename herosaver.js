@@ -3,10 +3,9 @@ var jqueryjs = "//code.jquery.com/jquery-3.3.1.min.js";
 var threejs = "//cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js";
 var downloadjs = "//raw.githubusercontent.com/rndme/download/master/download.js";
 
-inject_script(jqueryjs, function () {
-  inject_script(threejs, function () { init() });
-  inject_script(downloadjs);
-});
+inject_script(jqueryjs);
+inject_script(threejs, function () { init() });
+inject_script(downloadjs);
 
 var menu_style = {"margin-left": "20px", "font-size": "1.4em", "color" : "rgba(255, 255, 255, 0.8)", "cursor" : "pointer" };
 
