@@ -1,9 +1,11 @@
+var characterArea_hook = "character_area";
+var menu_style = {"margin-left": "20px", "font-size": "1.4em", "color" : "rgba(255, 255, 255, 0.8)", "cursor" : "pointer" };
 
 var jqueryjs = "//code.jquery.com/jquery-3.3.1.min.js";
 var threejs = "//cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js";
 var downloadjs = "//raw.githubusercontent.com/rndme/download/master/download.js";
 
-
+var character_area, stl, stl_base, sjson, ljson, labeljson;
 
 function init() {
 
@@ -278,14 +280,14 @@ function get_name() {
 }
 
 function inject_menu(){
-	var menu_style = {"margin-left": "20px", "font-size": "1.4em", "color" : "rgba(255, 255, 255, 0.8)", "cursor" : "pointer" };
-
-	var character_area = 	jQuery(".characterArea");
+	
 	var stl = 				jQuery("<a />").css(menu_style).text("Export Figure");
 	var stl_base = 			jQuery("<a />").css(menu_style).text("Export Figure + Base");
 	var sjson = 			jQuery("<a />").css(menu_style).text("Save JSON");
 	var ljson  = 			jQuery("<input/>").attr({"type": "file", "id": "ljson"}).css({"display":"none"}).text("Load JSON");
 	var labeljson  = 		jQuery("<label/>").attr({"for": "ljson"}).css(menu_style).text("Load JSON");
+	
+	var character_area = 	jQuery(characterArea_hook);
 	
     character_area.append(stl);
     character_area.append(stl_base);
