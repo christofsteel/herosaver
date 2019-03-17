@@ -306,8 +306,4 @@ function inject_script(url, callback) {
   head.appendChild(script);
 }
 
-function inject_script(url) {
-  inject_script(url, null);
-}
-
 
