@@ -5,8 +5,6 @@ var jqueryjs = "//code.jquery.com/jquery-3.3.1.min.js";
 var threejs = "//cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js";
 var downloadjs = "//raw.githubusercontent.com/rndme/download/master/download.js";
 
-var character_area, stl, stl_base, sjson, ljson, labeljson;
-
 function init() {
 
     (function(){
@@ -188,6 +186,8 @@ function init() {
             return saveAs;
         });
     }
+	
+	var character_area, stl, stl_base, sjson, ljson, labeljson;
 	
 	stl = 				jQuery("<a />").css(menu_style).text("Export Figure");
 	stl_base = 			jQuery("<a />").css(menu_style).text("Export Figure + Base");
