@@ -1,5 +1,4 @@
-var characterArea_hook = "character_area";
-var menu_style = {"margin-left": "20px", "font-size": "1.4em", "color" : "rgba(255, 255, 255, 0.8)", "cursor" : "pointer" };
+
 
 var jqueryjs = "//code.jquery.com/jquery-3.3.1.min.js";
 var threejs = "//cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js";
@@ -186,6 +185,9 @@ function init() {
             return saveAs;
         });
     }
+	
+	var characterArea_hook = "character_area";
+	var menu_style = {"margin-left": "20px", "font-size": "1.4em", "color" : "rgba(255, 255, 255, 0.8)", "cursor" : "pointer" };
 	
 	var character_area, stl, stl_base, sjson, ljson, labeljson;
 	
