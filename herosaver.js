@@ -7,15 +7,6 @@ inject_script(jqueryjs, function () {});
 inject_script(threejs, function () { init() });
 inject_script(downloadjs, function () {});
 
-var menu_style = {"margin-left": "20px", "font-size": "1.4em", "color" : "rgba(255, 255, 255, 0.8)", "cursor" : "pointer" };
-
-var character_area = 	jQuery(".characterArea");
-var stl = 				jQuery("<a />").css(menu_style).text("Export Figure");
-var stl_base = 			jQuery("<a />").css(menu_style).text("Export Figure + Base");
-var sjson = 			jQuery("<a />").css(menu_style).text("Save JSON");
-var ljson  = 			jQuery("<input/>").attr({"type": "file", "id": "ljson"}).css({"display":"none"}).text("Load JSON");
-var labeljson  = 		jQuery("<label/>").attr({"for": "ljson"}).css(menu_style).text("Load JSON");
-
 inject_menu();
 
 function init() {
@@ -200,7 +191,7 @@ function init() {
         });
     }
 
-
+	inject_menu();
 
 
     stl.click(function(e) {
@@ -286,6 +277,15 @@ function get_name() {
 }
 
 function inject_menu(){
+	var menu_style = {"margin-left": "20px", "font-size": "1.4em", "color" : "rgba(255, 255, 255, 0.8)", "cursor" : "pointer" };
+
+	var character_area = 	jQuery(".characterArea");
+	var stl = 				jQuery("<a />").css(menu_style).text("Export Figure");
+	var stl_base = 			jQuery("<a />").css(menu_style).text("Export Figure + Base");
+	var sjson = 			jQuery("<a />").css(menu_style).text("Save JSON");
+	var ljson  = 			jQuery("<input/>").attr({"type": "file", "id": "ljson"}).css({"display":"none"}).text("Load JSON");
+	var labeljson  = 		jQuery("<label/>").attr({"for": "ljson"}).css(menu_style).text("Load JSON");
+	
     character_area.append(stl);
     character_area.append(stl_base);
     character_area.append(sjson);
