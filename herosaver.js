@@ -183,7 +183,7 @@ function init() {
         });
     }
 
-
+    var model = CK.character;
 	var characterArea_hook = ".characterArea";
 	var menu_style = {"margin-left": "20px", "font-size": "1.4em", "color" : "rgba(255, 255, 255, 0.8)", "cursor" : "pointer" };
 	
@@ -194,6 +194,8 @@ function init() {
 	sjson = 			jQuery("<a />").css(menu_style).text("Export (JSON)");
 	ljson  = 			jQuery("<input/>").attr({"type": "file", "id": "ljson"}).css({"display":"none"}).text("Import (JSON)");
 	labeljson  = 		jQuery("<label/>").attr({"for": "ljson"}).css(menu_style).text("Import (JSON)");
+    enlarge = 			jQuery("<a />").css(menu_style).text("Enlarge");
+	reset_scale = 			jQuery("<a />").css(menu_style).text("Reset Scale");
 	
 	character_area = 	jQuery(characterArea_hook);
 	
@@ -202,6 +204,8 @@ function init() {
     character_area.append(sjson);
     character_area.append(ljson);
     character_area.append(labeljson);
+    character_area.append(enlarge);
+    character_area.append(reset_scale);
     character_area.css("right", 0);
 
     /*stl.click(function(e) {
@@ -247,14 +251,21 @@ function init() {
         var name = get_name();
         download(stlString, name + '.stl', 'application/sla');
     });*/
+    
     stl_base.click(function(e) {
         e.preventDefault(); 
-        var exporter = new RK.STLExporter();    
-        var stlString = exporter.parse([CK.character])
-        var name = get_name();
-        download(stlString, name + '.stl', 'application/sla');
+        download_stl(model);
     });
 
+    enlarge.click(function(e) {
+        e.preventDefault(); 
+        set_object_props(model,[10, 10, 10], [Math.PI / 2, 0, 0]);
+    });
+
+    reset_scale.click(function(e) {
+        e.preventDefault(); 
+        set_object_props(model,[1, 1, 1], [0, 0, 0]);
+    });
 
     sjson.click(function(e) {
         e.preventDefault();
@@ -289,6 +300,19 @@ function inject_script(url, callback) {
 inject_script("//code.jquery.com/jquery-3.3.1.min.js", function () {
     inject_script("//cdnjs.cloudflare.com/ajax/libs/three.js/100/three.js", function () { init() })
 });
+
+function download_stl(object){
+    var exporter = new RK.STLExporter();   
+    var stlString = exporter.parse([object])
+    var name = get_name();
+    download(stlString, name + '_base.stl', 'application/sla');
+}
+
+function set_object_props(object,scale,rot){
+    object.scale.set( ...scale );
+    object.rotation.set( ...rot );
+    object.refresh();
+}
 
 function get_name() {
   var timestamp = new Date().getUTCMilliseconds();
