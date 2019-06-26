@@ -305,7 +305,7 @@ function download_stl(object){
     var exporter = new RK.STLExporter();   
     var stlString = exporter.parse([object])
     var name = get_name();
-    download(stlString, name + '_base.stl', 'application/sla');
+    download(stlString, name + '.stl', 'application/sla');
 }
 
 function set_object_props(object,scale,rot){
