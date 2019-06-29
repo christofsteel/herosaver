@@ -15,7 +15,7 @@ with).
 
 While the ease of use of the editor and selection of character options on
 HeroForge remain unmatched (to my knowlege), I found this site
-(desktophero3d.com)[http://desktophero3d.com/] as an alternative for free
+[desktophero3d.com](http://desktophero3d.com/) as an alternative for free
 RPG miniatures, if you cannot afford the models of HeroForge.
 
 So long,
